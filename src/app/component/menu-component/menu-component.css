@@ -1,0 +1,52 @@
+#cabecal
+
+
+
+
+
+
+
+
+
+
+
+#cabecalho{
+    width: 1000px;
+    height: 100px;
+    margin:20 px auto;
+    padding: 25px;
+    background-color:var(--cor-primaria);
+    justify-content: space-between;
+    color:var(--branca)
+
+}
+
+
+
+padding: 3px;
+background-color: var(--cor-primaria);
+justify-content: space-between;
+color: var(--branca);
+}
+
+#logo {
+    width: 30%;
+    font-size: 25px;
+}
+
+#titulo-logo {
+    color: var(--botao02);
+    border: 1px solid var(--botao02);
+    margin: 0px 10px;
+    padding: 0px 10px;
+}
+
+#ul-menu {
+    list-style: none;
+}
+
+.lnk-menu {
+    color: var(--branca);
+    text-decoration: none;
+    margin: 0px 10px;
+}

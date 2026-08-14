@@ -1,1 +1,100 @@
-/* You can add global styles to this file, and also import other style files */
+/* Fundo da página */
+body {
+    margin: 0;
+    padding: 0;
+    background: #050b18;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+/* Título */
+h1 {
+    text-align: center;
+    color: #1e90ff;
+    margin-top: 30px;
+    font-size: 36px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Área do formulário */
+form {
+    width: 500px;
+    margin: 30px auto;
+    padding: 35px;
+    background: #0b132b;
+    border: 1px solid #1e3a5f;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(30, 144, 255, 0.2);
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 7px;
+    color: #dbeafe;
+    font-weight: bold;
+}
+
+/* Campos */
+input,
+select {
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    background: #050b18;
+    color: white;
+    border: 1px solid #1e90ff;
+    border-radius: 8px;
+    outline: none;
+    font-size: 15px;
+}
+
+/* Quando clicar no campo */
+input:focus,
+select:focus {
+    border-color: #00aaff;
+    box-shadow: 0 0 8px rgba(30, 144, 255, 0.5);
+}
+
+/* Placeholder */
+input::placeholder {
+    color: #718096;
+}
+
+/* Botão */
+button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 13px;
+    background: #1e90ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Efeito ao passar o mouse */
+button:hover {
+    background: #0066cc;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(30, 144, 255, 0.4);
+}
+
+/* Mensagem de erro */
+.erro {
+    color: #ff4d4d;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+/* Área de conteúdo */
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
