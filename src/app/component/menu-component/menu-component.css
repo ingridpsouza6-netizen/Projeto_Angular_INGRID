@@ -1,32 +1,11 @@
-#cabecal
-
-
-
-
-
-
-
-
-
-
-
-#cabecalho{
+#cabecalho {
     width: 1000px;
     height: 100px;
-    margin:20 px auto;
+    margin: 20px auto;
     padding: 25px;
-    background-color:var(--cor-primaria);
+    background-color: var(--cor-primaria);
     justify-content: space-between;
-    color:var(--branca)
-
-}
-
-
-
-padding: 3px;
-background-color: var(--cor-primaria);
-justify-content: space-between;
-color: var(--branca);
+    color: var(--branca);
 }
 
 #logo {
