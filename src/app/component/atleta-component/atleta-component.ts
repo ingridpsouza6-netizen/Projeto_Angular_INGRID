@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { AtletaService } from '../../service/atleta-service';
 import { Atleta } from '../Atleta';
 
@@ -21,9 +22,34 @@ export class AtletaComponent {
   cidade = '';
   uf = '';
 
-  constructor(private atletaService: AtletaService) {}
+  // ID DO ATLETA QUE ESTÁ SENDO EDITADO
+  idAtletaEditando = 0;
+
+  constructor(
+    private atletaService: AtletaService,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit() {
+
+    this.route.queryParams.subscribe(params => {
+
+      const id = params['id'];
+
+      console.log('ID RECEBIDO PARA EDIÇÃO:', id);
+
+      if (id) {
+
+        this.carregaDados(Number(id));
+
+      }
+
+    });
+
+  }
 
   limparDados() {
+
     this.nome = '';
     this.cpf = 0;
     this.sexo = '';
@@ -32,12 +58,16 @@ export class AtletaComponent {
     this.bairro = '';
     this.cidade = '';
     this.uf = '';
+
+    this.idAtletaEditando = 0;
+
   }
 
   salvar() {
 
     const atleta = new Atleta();
 
+    atleta.id = this.idAtletaEditando;
     atleta.nome = this.nome;
     atleta.cpf = this.cpf;
     atleta.sexo = this.sexo;
@@ -47,21 +77,64 @@ export class AtletaComponent {
     atleta.cidade = this.cidade;
     atleta.uf = this.uf;
 
-    this.atletaService.salvarAtleta(atleta).subscribe({
-      next: (dadosAtleta) => {
+    // CADASTRAR NOVO ATLETA
+    if (this.idAtletaEditando === 0) {
 
-        console.log('ATLETA SALVO COM SUCESSO:', dadosAtleta);
+      this.atletaService.salvarAtleta(atleta).subscribe({
 
-        this.limparDados();
+        next: (dadosAtleta) => {
 
-      },
+          console.log(
+            'ATLETA SALVO COM SUCESSO:',
+            dadosAtleta
+          );
 
-      error: (erro) => {
+          this.limparDados();
 
-        console.log('ERRO AO SALVAR ATLETA:', erro);
+        },
 
-      }
-    });
+        error: (erro) => {
+
+          console.log(
+            'ERRO AO SALVAR ATLETA:',
+            erro
+          );
+
+        }
+
+      });
+
+    }
+
+    // ALTERAR ATLETA EXISTENTE
+    else {
+
+      this.atletaService.alterarAtleta(atleta).subscribe({
+
+        next: (dadosAtleta) => {
+
+          console.log(
+            'ATLETA ALTERADO COM SUCESSO:',
+            dadosAtleta
+          );
+
+          this.limparDados();
+
+        },
+
+        error: (erro) => {
+
+          console.log(
+            'ERRO AO ALTERAR ATLETA:',
+            erro
+          );
+
+        }
+
+      });
+
+    }
+
   }
 
   carregaDados(idAtleta: number) {
@@ -70,6 +143,15 @@ export class AtletaComponent {
 
       next: (dadosAtleta) => {
 
+        console.log(
+          'ATLETA CARREGADO PARA EDIÇÃO:',
+          dadosAtleta
+        );
+
+        // GUARDA O ID
+        this.idAtletaEditando = dadosAtleta.id;
+
+        // PREENCHE O FORMULÁRIO
         this.nome = dadosAtleta.nome;
         this.cpf = dadosAtleta.cpf;
         this.sexo = dadosAtleta.sexo;
@@ -83,11 +165,15 @@ export class AtletaComponent {
 
       error: (erro) => {
 
-        console.log('ERRO AO BUSCAR ATLETA:', erro);
+        console.log(
+          'ERRO AO BUSCAR ATLETA:',
+          erro
+        );
 
       }
 
     });
+
   }
 
 }

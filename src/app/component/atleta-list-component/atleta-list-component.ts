@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { JsonPipe } from '@angular/common';
+import { Router } from '@angular/router';
 import { AtletaService } from '../../service/atleta-service';
 import { Atleta } from '../Atleta';
 
@@ -13,26 +14,81 @@ export class AtletaListComponent {
 
   atletas: Atleta[] = [];
 
-  constructor(private atletaService: AtletaService) {}
+  constructor(
+    private atletaService: AtletaService,
+    private cdr: ChangeDetectorRef,
+    private router: Router
+  ) {}
 
   ngOnInit() {
 
-    console.log('ENTROU NA LISTA');
+    console.log('========== INÍCIO DA LISTA ==========');
+
+    this.listar();
+
+  }
+
+  listar() {
 
     this.atletaService.listarAtletas().subscribe({
 
-      next: (dadosAtletas) => {
+      next: (dadosAtletas: Atleta[]) => {
 
-        console.log('DADOS DA API:', dadosAtletas);
+        console.log('ATLETAS RECEBIDOS DA API:', dadosAtletas);
+
+        console.log('QUANTIDADE RECEBIDA:', dadosAtletas.length);
 
         this.atletas = dadosAtletas;
+
+        console.log(
+          'ATLETAS DEPOIS DE this.atletas = dadosAtletas:',
+          this.atletas
+        );
+
+        this.cdr.detectChanges();
 
       },
 
       error: (erro) => {
 
-        console.error('ERRO DA API:', erro);
+        console.error('ERRO AO LISTAR ATLETAS:', erro);
 
+      }
+
+    });
+
+  }
+
+  excluir(idAtleta: number) {
+
+    this.atletaService.excluirAtleta(idAtleta).subscribe({
+
+      next: () => {
+
+        console.log('ATLETA EXCLUÍDO COM SUCESSO');
+
+        this.listar();
+
+      },
+
+      error: (erro) => {
+
+        console.error('ERRO AO EXCLUIR ATLETA:', erro);
+
+      }
+
+    });
+
+  }
+
+  editar(idAtleta: number) {
+
+    console.log('EDITAR ATLETA:', idAtleta);
+
+    this.router.navigate(['/atleta'], {
+
+      queryParams: {
+        id: idAtleta
       }
 
     });

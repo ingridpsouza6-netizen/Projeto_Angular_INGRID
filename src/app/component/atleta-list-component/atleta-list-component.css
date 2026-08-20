@@ -1,0 +1,54 @@
+#lista-atletas {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 25px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  #lista-atletas h1 {
+    text-align: center;
+    color: #0b2a4a;
+    margin-bottom: 15px;
+  }
+  
+  #lista-atletas > p {
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 25px;
+  }
+  
+  .atleta {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #f5f9ff;
+    border: 2px solid #0b2a4a;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    color: #222;
+  }
+  
+  .atleta h2 {
+    color: #0b2a4a;
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+  
+  .atleta p {
+    color: #222;
+    font-size: 16px;
+    margin: 8px 0;
+  }
+  
+  .atleta strong {
+    color: #0b2a4a;
+  }
+  
+  .atleta hr {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+  }

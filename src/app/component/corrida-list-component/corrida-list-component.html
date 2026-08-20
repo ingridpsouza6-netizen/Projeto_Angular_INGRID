@@ -1,0 +1,41 @@
+<section id="lista-corridas">
+
+    <h1>CORRIDAS CADASTRADAS</h1>
+
+    <p>
+        Total de corridas: {{ corridas.length }}
+    </p>
+
+    @for (corrida of corridas; track corrida.id) {
+
+        <div class="corrida">
+
+            <h2>NOME: {{ corrida.nome }}</h2>
+
+            <p>
+                <strong>Data:</strong>
+                {{ corrida.data }}
+            </p>
+
+            <p>
+                <strong>Local:</strong>
+                {{ corrida.local }}
+            </p>
+
+            <p>
+                <strong>Distância:</strong>
+                {{ corrida.distancia }} km
+            </p>
+
+            <p>
+                <strong>Horário:</strong>
+                {{ corrida.horario }}
+            </p>
+
+            <hr>
+
+        </div>
+
+    }
+
+</section>
