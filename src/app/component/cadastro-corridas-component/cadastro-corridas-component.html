@@ -1,12 +1,22 @@
 <section id="form">
 
-    <h2>Cadastro de Corrida</h2>
+    <h2>
+        {{ idCorridaEditando === ''
+            ? 'Cadastro de Corrida'
+            : 'Editar Corrida'
+        }}
+    </h2>
 
-    <form id="form-corrida" (ngSubmit)="salvar()">
+
+    <form
+        id="form-corrida"
+        (ngSubmit)="salvar()">
+
 
         <label for="descricao_corrida">
             Nome da Corrida
         </label>
+
 
         <input
             type="text"
@@ -22,6 +32,7 @@
             Data
         </label>
 
+
         <input
             type="date"
             name="data_corrida"
@@ -34,33 +45,42 @@
             Distância da Corrida
         </label>
 
+
         <div>
 
             <label>
+
                 <input
                     type="checkbox"
                     name="distancia5km"
                     [(ngModel)]="distancia5km">
 
                 5 km
+
             </label>
 
+
             <label>
+
                 <input
                     type="checkbox"
                     name="distancia10km"
                     [(ngModel)]="distancia10km">
 
                 10 km
+
             </label>
 
+
             <label>
+
                 <input
                     type="checkbox"
                     name="distancia25km"
                     [(ngModel)]="distancia25km">
 
                 25 km
+
             </label>
 
         </div>
@@ -71,14 +91,22 @@
             <button
                 type="submit"
                 id="btnAdd">
-                Cadastrar
+
+                {{ idCorridaEditando === ''
+                    ? 'Cadastrar'
+                    : 'Salvar Alterações'
+                }}
+
             </button>
 
+
             <button
-                type="reset"
+                type="button"
                 id="btnLimpar"
-                (click)="limparDados()">
+                (click)="limpar()">
+
                 Limpar
+
             </button>
 
         </div>

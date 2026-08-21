@@ -10,27 +10,47 @@
 
         <div class="corrida">
 
-            <h2>NOME: {{ corrida.nome }}</h2>
+            <h2>
+                NOME: {{ corrida.descricao_corrida }}
+            </h2>
 
             <p>
                 <strong>Data:</strong>
-                {{ corrida.data }}
-            </p>
-
-            <p>
-                <strong>Local:</strong>
-                {{ corrida.local }}
+                {{ corrida.data_corrida }}
             </p>
 
             <p>
                 <strong>Distância:</strong>
-                {{ corrida.distancia }} km
+
+                @if (corrida.distancia5km) {
+                    5 km
+                }
+
+                @if (corrida.distancia10km) {
+                    10 km
+                }
+
+                @if (corrida.distancia25km) {
+                    25 km
+                }
+
             </p>
 
-            <p>
-                <strong>Horário:</strong>
-                {{ corrida.horario }}
-            </p>
+            <div class="botoes">
+
+                <button
+                    type="button"
+                    (click)="editar(corrida)">
+                    Editar
+                </button>
+
+                <button
+                    type="button"
+                    (click)="excluir(corrida)">
+                    Excluir
+                </button>
+
+            </div>
 
             <hr>
 

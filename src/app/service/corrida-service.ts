@@ -4,48 +4,62 @@ import { Observable } from 'rxjs';
 import { Corrida } from '../component/corrida';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class CorridaService {
 
-  private urlApi =
-    'https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/corrida';
+    private urlApi =
+        'https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/corrida';
 
-  constructor(private http: HttpClient) {}
+    constructor(
+        private http: HttpClient
+    ) {}
 
-  // LISTAR CORRIDAS
-  listarCorridas(): Observable<Corrida[]> {
-    return this.http.get<Corrida[]>(this.urlApi);
-  }
 
-  // BUSCAR UMA CORRIDA
-  listarCorrida(idCorrida: number): Observable<Corrida> {
-    return this.http.get<Corrida>(
-      `${this.urlApi}/${idCorrida}`
-    );
-  }
+    listarCorridas(): Observable<Corrida[]> {
 
-  // CADASTRAR CORRIDA
-  salvarCorrida(corrida: Corrida): Observable<Corrida> {
-    return this.http.post<Corrida>(
-      this.urlApi,
-      corrida
-    );
-  }
+        return this.http.get<Corrida[]>(
+            this.urlApi
+        );
 
-  // EXCLUIR CORRIDA
-  excluirCorrida(idCorrida: number): Observable<Corrida> {
-    return this.http.delete<Corrida>(
-      `${this.urlApi}/${idCorrida}`
-    );
-  }
+    }
 
-  // ALTERAR CORRIDA
-  alterarCorrida(corrida: Corrida): Observable<Corrida> {
-    return this.http.put<Corrida>(
-      `${this.urlApi}/${corrida.id}`,
-      corrida
-    );
-  }
+
+    listarCorrida(idCorrida: number): Observable<Corrida> {
+
+        return this.http.get<Corrida>(
+            `${this.urlApi}/${idCorrida}`
+        );
+
+    }
+
+
+    salvarCorrida(corrida: Corrida): Observable<Corrida> {
+
+        return this.http.post<Corrida>(
+            this.urlApi,
+            corrida
+        );
+
+    }
+
+
+    alterarCorrida(corrida: Corrida): Observable<Corrida> {
+
+        return this.http.put<Corrida>(
+            `${this.urlApi}/${corrida.id}`,
+            corrida
+        );
+
+    }
+
+
+    excluirCorrida(idCorrida: number): Observable<Corrida> {
+
+        return this.http.delete<Corrida>(
+            `${this.urlApi}/${idCorrida}`
+        );
+
+    }
 
 }

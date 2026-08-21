@@ -10,6 +10,8 @@ import { CorridaComponent } from './component/corrida-component/corrida-componen
 
 import { CorridaListComponent } from './component/corrida-list-component/corrida-list-component';
 
+import { CadastroInscricoesComponent } from './component/cadastro-inscricoes-component/cadastro-inscricoes-component';
+
 
 export const routes: Routes = [
 
@@ -36,6 +38,11 @@ export const routes: Routes = [
   {
     path: 'corridas',
     component: CorridaListComponent
+  },
+
+  {
+    path: 'cadastro-inscricoes',
+    component: CadastroInscricoesComponent
   }
 
 ];

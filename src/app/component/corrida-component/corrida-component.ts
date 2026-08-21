@@ -12,15 +12,14 @@ import { Corrida } from '../corrida';
 })
 export class CorridaComponent {
 
-  // ATRIBUTOS DA CORRIDA
-  nome = '';
-  data = '';
-  local = '';
-  distancia = 0;
-  horario = '';
+  descricao_corrida = '';
+  data_corrida = '';
 
-  // ID DA CORRIDA QUE ESTÁ SENDO EDITADA
-  idCorridaEditando = 0;
+  distancia5km = false;
+  distancia10km = false;
+  distancia25km = false;
+
+  idCorridaEditando = '';
 
   constructor(
     private corridaService: CorridaService,
@@ -33,11 +32,18 @@ export class CorridaComponent {
 
       const id = params['id'];
 
-      console.log('ID RECEBIDO PARA EDIÇÃO:', id);
+      console.log(
+        'ID RECEBIDO PARA EDIÇÃO:',
+        id
+      );
 
-      if (id) {
+      if (
+        id !== undefined &&
+        id !== null &&
+        id !== ''
+      ) {
 
-        this.carregaDados(Number(id));
+        this.carregaDados(String(id));
 
       }
 
@@ -47,13 +53,14 @@ export class CorridaComponent {
 
   limparDados() {
 
-    this.nome = '';
-    this.data = '';
-    this.local = '';
-    this.distancia = 0;
-    this.horario = '';
+    this.descricao_corrida = '';
+    this.data_corrida = '';
 
-    this.idCorridaEditando = 0;
+    this.distancia5km = false;
+    this.distancia10km = false;
+    this.distancia25km = false;
+
+    this.idCorridaEditando = '';
 
   }
 
@@ -62,103 +69,131 @@ export class CorridaComponent {
     const corrida = new Corrida();
 
     corrida.id = this.idCorridaEditando;
-    corrida.nome = this.nome;
-    corrida.data = this.data;
-    corrida.local = this.local;
-    corrida.distancia = this.distancia;
-    corrida.horario = this.horario;
 
-    // CADASTRAR NOVA CORRIDA
-    if (this.idCorridaEditando === 0) {
+    corrida.descricao_corrida =
+      this.descricao_corrida;
 
-      this.corridaService.salvarCorrida(corrida).subscribe({
+    corrida.data_corrida =
+      this.data_corrida;
 
-        next: (dadosCorrida) => {
+    corrida.distancia5km =
+      this.distancia5km;
 
-          console.log(
-            'CORRIDA SALVA COM SUCESSO:',
-            dadosCorrida
-          );
+    corrida.distancia10km =
+      this.distancia10km;
 
-          this.limparDados();
+    corrida.distancia25km =
+      this.distancia25km;
 
-        },
 
-        error: (erro) => {
+    if (this.idCorridaEditando === '') {
 
-          console.error(
-            'ERRO AO SALVAR CORRIDA:',
-            erro
-          );
+      this.corridaService
+        .salvarCorrida(corrida)
+        .subscribe({
 
-        }
+          next: (dadosCorrida) => {
 
-      });
+            console.log(
+              'CORRIDA SALVA COM SUCESSO:',
+              dadosCorrida
+            );
 
-    }
+            this.limparDados();
 
-    // ALTERAR CORRIDA EXISTENTE
-    else {
+          },
 
-      this.corridaService.alterarCorrida(corrida).subscribe({
+          error: (erro) => {
 
-        next: (dadosCorrida) => {
+            console.error(
+              'ERRO AO SALVAR CORRIDA:',
+              erro
+            );
 
-          console.log(
-            'CORRIDA ALTERADA COM SUCESSO:',
-            dadosCorrida
-          );
+          }
 
-          this.limparDados();
+        });
 
-        },
+    } else {
 
-        error: (erro) => {
+      this.corridaService
+        .alterarCorrida(corrida)
+        .subscribe({
 
-          console.error(
-            'ERRO AO ALTERAR CORRIDA:',
-            erro
-          );
+          next: (dadosCorrida) => {
 
-        }
+            console.log(
+              'CORRIDA ALTERADA COM SUCESSO:',
+              dadosCorrida
+            );
 
-      });
+            this.limparDados();
+
+          },
+
+          error: (erro) => {
+
+            console.error(
+              'ERRO AO ALTERAR CORRIDA:',
+              erro
+            );
+
+          }
+
+        });
 
     }
 
   }
 
-  carregaDados(idCorrida: number) {
+  carregaDados(idCorrida: string) {
 
-    this.corridaService.listarCorrida(idCorrida).subscribe({
+    console.log(
+      'BUSCANDO CORRIDA COM ID:',
+      idCorrida
+    );
 
-      next: (dadosCorrida) => {
+    this.corridaService
+      .listarCorrida(Number(idCorrida))
+      .subscribe({
 
-        console.log(
-          'CORRIDA CARREGADA PARA EDIÇÃO:',
-          dadosCorrida
-        );
+        next: (dadosCorrida) => {
 
-        this.idCorridaEditando = dadosCorrida.id;
+          console.log(
+            'CORRIDA ENCONTRADA:',
+            dadosCorrida
+          );
 
-        this.nome = dadosCorrida.nome;
-        this.data = dadosCorrida.data;
-        this.local = dadosCorrida.local;
-        this.distancia = dadosCorrida.distancia;
-        this.horario = dadosCorrida.horario;
+          this.idCorridaEditando =
+            String(dadosCorrida.id);
 
-      },
+          this.descricao_corrida =
+            dadosCorrida.descricao_corrida;
 
-      error: (erro) => {
+          this.data_corrida =
+            dadosCorrida.data_corrida;
 
-        console.error(
-          'ERRO AO BUSCAR CORRIDA:',
-          erro
-        );
+          this.distancia5km =
+            dadosCorrida.distancia5km;
 
-      }
+          this.distancia10km =
+            dadosCorrida.distancia10km;
 
-    });
+          this.distancia25km =
+            dadosCorrida.distancia25km;
+
+        },
+
+        error: (erro) => {
+
+          console.error(
+            'ERRO AO BUSCAR CORRIDA:',
+            erro
+          );
+
+        }
+
+      });
 
   }
 

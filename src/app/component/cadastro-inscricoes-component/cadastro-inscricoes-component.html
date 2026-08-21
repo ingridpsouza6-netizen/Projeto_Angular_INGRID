@@ -1,0 +1,100 @@
+<section id="form">
+
+    <h2>Cadastro de Inscrição</h2>
+
+    <form
+        id="form-inscricao"
+        (ngSubmit)="salvar()">
+
+
+        <label for="atleta">
+            Atleta
+        </label>
+
+        <select
+            id="atleta"
+            name="atleta"
+            [(ngModel)]="idAtleta"
+            required>
+
+            <option
+                [ngValue]="0">
+
+                Selecione um atleta
+
+            </option>
+
+
+            @for (atleta of atletas; track atleta.id) {
+
+                <option
+                    [ngValue]="atleta.id">
+
+                    {{ atleta.nome }}
+
+                </option>
+
+            }
+
+        </select>
+
+
+        <label for="corrida">
+            Corrida
+        </label>
+
+        <select
+            id="corrida"
+            name="corrida"
+            [(ngModel)]="idCorrida"
+            required>
+
+            <option
+                value="">
+
+                Selecione uma corrida
+
+            </option>
+
+
+            @for (corrida of corridas; track corrida.id) {
+
+                <option
+                    [value]="corrida.id">
+
+                    {{ corrida.descricao_corrida }}
+                    -
+                    {{ corrida.data_corrida }}
+
+                </option>
+
+            }
+
+        </select>
+
+
+        <div id="div-btns">
+
+            <button
+                type="submit"
+                id="btnAdd">
+
+                Realizar Inscrição
+
+            </button>
+
+
+            <button
+                type="button"
+                id="btnLimpar"
+                (click)="limpar()">
+
+                Limpar
+
+            </button>
+
+        </div>
+
+    </form>
+
+</section>

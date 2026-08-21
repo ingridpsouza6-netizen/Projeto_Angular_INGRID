@@ -1,6 +1,8 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
+
 import { CorridaService } from '../../service/corrida-service';
 import { Corrida } from '../corrida';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-corrida-list-component',
@@ -14,12 +16,11 @@ export class CorridaListComponent {
 
   constructor(
     private corridaService: CorridaService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private router: Router
   ) {}
 
   ngOnInit() {
-
-    console.log('========== INÍCIO DA LISTA DE CORRIDAS ==========');
 
     this.listar();
 
@@ -57,6 +58,61 @@ export class CorridaListComponent {
       }
 
     });
+
+  }
+
+  editar(corrida: Corrida) {
+
+    console.log(
+      'CORRIDA SELECIONADA PARA EDIÇÃO:',
+      corrida
+    );
+
+    this.router.navigate(
+      ['/cadastro-corridas'],
+      {
+        queryParams: {
+          id: corrida.id
+        }
+      }
+    );
+
+  }
+
+  excluir(corrida: Corrida) {
+
+    const confirmar = confirm(
+      'Tem certeza que deseja excluir esta corrida?'
+    );
+
+    if (!confirmar) {
+      return;
+    }
+
+    this.corridaService
+      .excluirCorrida(Number(corrida.id))
+      .subscribe({
+
+        next: () => {
+
+          console.log(
+            'CORRIDA EXCLUÍDA COM SUCESSO!'
+          );
+
+          this.listar();
+
+        },
+
+        error: (erro) => {
+
+          console.error(
+            'ERRO AO EXCLUIR CORRIDA:',
+            erro
+          );
+
+        }
+
+      });
 
   }
 
