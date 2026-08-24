@@ -1,0 +1,90 @@
+#form {
+    width: 90%;
+    margin: 40px auto;
+    color: white;
+}
+
+#form h2 {
+    color: white;
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+#form-corrida {
+    background-color: #0b1735;
+    border: 1px solid #1e4b80;
+    border-radius: 8px;
+
+    padding: 35px;
+}
+
+#form-corrida label {
+    display: block;
+
+    color: #dbeafe;
+    font-size: 18px;
+    font-weight: bold;
+
+    margin-bottom: 10px;
+}
+
+#form-corrida input {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 13px;
+    margin-bottom: 25px;
+
+    background-color: #020817;
+    color: white;
+
+    border: 1px solid #008cff;
+    border-radius: 6px;
+
+    font-size: 16px;
+}
+
+#form-corrida input:focus {
+    outline: none;
+    border-color: #00aaff;
+}
+
+#form-corrida input::placeholder {
+    color: #8ca3c7;
+}
+
+#div-btns {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+#div-btns button {
+    padding: 12px 25px;
+
+    border: none;
+    border-radius: 6px;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+#btnAdd {
+    background-color: #0066cc;
+    color: white;
+}
+
+#btnAdd:hover {
+    background-color: #008cff;
+}
+
+#btnLimpar {
+    background-color: #333;
+    color: white;
+}
+
+#btnLimpar:hover {
+    background-color: #555;
+}

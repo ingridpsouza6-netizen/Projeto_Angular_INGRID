@@ -15,12 +15,14 @@ export class AtletaComponent {
   // ATRIBUTOS
   nome = '';
   cpf = 0;
+  dataNascimento = '';
   sexo = '';
   cep = 0;
   ruaLogradouro = '';
   bairro = '';
   cidade = '';
   uf = '';
+  
 
   // ID DO ATLETA QUE ESTÁ SENDO EDITADO
   idAtletaEditando = 0;
@@ -53,6 +55,7 @@ export class AtletaComponent {
     this.nome = '';
     this.cpf = 0;
     this.sexo = '';
+    this.dataNascimento = '';
     this.cep = 0;
     this.ruaLogradouro = '';
     this.bairro = '';
@@ -71,6 +74,7 @@ export class AtletaComponent {
     atleta.nome = this.nome;
     atleta.cpf = this.cpf;
     atleta.sexo = this.sexo;
+    atleta.dataNascimento = this.dataNascimento;
     atleta.cep = this.cep;
     atleta.ruaLogradouro = this.ruaLogradouro;
     atleta.bairro = this.bairro;

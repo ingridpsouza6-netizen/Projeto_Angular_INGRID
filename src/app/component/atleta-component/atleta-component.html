@@ -23,6 +23,16 @@
             maxlength="14"
             required
             placeholder="Digite o CPF">
+            <label for="dataNascimento">
+                Data de nascimento
+            </label>
+            
+            <input
+                type="date"
+                id="dataNascimento"
+                name="dataNascimento"
+                [(ngModel)]="dataNascimento"
+                required>
 
         <label for="sexo">Sexo</label>
 
@@ -118,3 +128,13 @@
 
     </form>
 </section>
+<label for="dataNascimento">
+    Data de nascimento
+</label>
+
+<input
+    type="date"
+    id="dataNascimento"
+    name="dataNascimento"
+    [(ngModel)]="dataNascimento"
+    required>

@@ -13,6 +13,15 @@
 
           <p><strong>CPF:</strong> {{ atleta.cpf }}</p>
 
+          <p>
+            <strong>Data de nascimento:</strong>
+            {{ atleta.dataNascimento }}
+        </p>
+        <p>
+          <strong>Idade:</strong>
+          {{ calcularIdade(atleta.dataNascimento) }} anos
+      </p>
+
           <p><strong>Sexo:</strong> {{ atleta.sexo }}</p>
 
           <p><strong>CEP:</strong> {{ atleta.cep }}</p>

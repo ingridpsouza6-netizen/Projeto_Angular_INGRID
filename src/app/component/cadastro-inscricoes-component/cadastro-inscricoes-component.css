@@ -1,0 +1,111 @@
+#form-inscricao {
+    width: 90%;
+    margin: 40px auto;
+    color: white;
+}
+
+#form-inscricao h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.linha {
+    margin-bottom: 25px;
+}
+
+.campo {
+    margin-bottom: 25px;
+}
+
+.campo label {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #dbeafe;
+}
+
+.campo input,
+.campo select {
+    width: 100%;
+    padding: 14px;
+    box-sizing: border-box;
+
+    background-color: #020817;
+    color: white;
+
+    border: 1px solid #008cff;
+    border-radius: 7px;
+
+    font-size: 16px;
+}
+
+.campo input:focus,
+.campo select:focus {
+    outline: none;
+    border: 1px solid #00aaff;
+}
+
+.opcoes {
+    display: flex;
+    gap: 30px;
+}
+
+.opcoes label {
+    font-size: 17px;
+    font-weight: normal;
+    color: white;
+}
+
+.opcoes input {
+    width: auto;
+    margin-right: 8px;
+}
+
+#valor {
+    padding: 18px;
+    margin-top: 25px;
+    margin-bottom: 20px;
+
+    background-color: #0b1735;
+    border: 1px solid #1e4b80;
+    border-radius: 7px;
+
+    font-size: 18px;
+}
+
+#valor span {
+    float: right;
+    color: #4ade80;
+    font-weight: bold;
+}
+
+#termos {
+    margin-bottom: 25px;
+    color: white;
+}
+
+#termos input {
+    margin-right: 8px;
+}
+
+#btnFinalizar {
+    width: 100%;
+    padding: 15px;
+
+    background-color: #0066cc;
+    color: white;
+
+    border: none;
+    border-radius: 7px;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+#btnFinalizar:hover {
+    background-color: #008cff;
+}

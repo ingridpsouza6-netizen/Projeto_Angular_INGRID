@@ -13,19 +13,16 @@ export class AtletaService {
 
   constructor(private http: HttpClient) {}
 
-  // LISTAR ATLETAS
   listarAtletas(): Observable<Atleta[]> {
     return this.http.get<Atleta[]>(this.urlApi);
   }
 
-  // BUSCAR UM ATLETA
   listarAtleta(idAtleta: number): Observable<Atleta> {
     return this.http.get<Atleta>(
       `${this.urlApi}/${idAtleta}`
     );
   }
 
-  // CADASTRAR ATLETA
   salvarAtleta(atleta: Atleta): Observable<Atleta> {
     return this.http.post<Atleta>(
       this.urlApi,
@@ -33,19 +30,44 @@ export class AtletaService {
     );
   }
 
-  // EXCLUIR ATLETA
   excluirAtleta(idAtleta: number): Observable<Atleta> {
     return this.http.delete<Atleta>(
       `${this.urlApi}/${idAtleta}`
     );
   }
 
-  // ALTERAR ATLETA
   alterarAtleta(atleta: Atleta): Observable<Atleta> {
     return this.http.put<Atleta>(
       `${this.urlApi}/${atleta.id}`,
       atleta
     );
+  }
+
+  calcularIdade(dataNascimento: string): number {
+
+    const nascimento = new Date(
+      dataNascimento + 'T00:00:00'
+    );
+
+    const hoje = new Date();
+
+    let idade =
+      hoje.getFullYear() -
+      nascimento.getFullYear();
+
+    const mes =
+      hoje.getMonth() -
+      nascimento.getMonth();
+
+    if (
+      mes < 0 ||
+      (mes === 0 &&
+       hoje.getDate() < nascimento.getDate())
+    ) {
+      idade--;
+    }
+
+    return idade;
   }
 
 }
