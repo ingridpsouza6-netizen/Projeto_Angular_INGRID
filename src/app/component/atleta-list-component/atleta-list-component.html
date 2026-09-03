@@ -2,51 +2,86 @@
 
   <h1>ATLETAS CADASTRADOS</h1>
 
-  <p>Total de atletas: {{ atletas.length }}</p>
+  <p>Esta é a página de lista de atletas.</p>
 
-  
-@for (atleta of atletas; track atleta.id) {
+  <p>
+    <strong>Total de atletas:</strong>
+    {{ atletas.length }}
+  </p>
 
-      <div class="atleta">
+  <div *ngFor="let atleta of atletas">
 
-          <h2>{{ atleta.nome }}</h2>
+    <h2>NOME: {{ atleta.nome }}</h2>
 
-          <p><strong>CPF:</strong> {{ atleta.cpf }}</p>
+    <p>
+      <strong>CPF:</strong>
+      {{ atleta.cpf }}
+    </p>
 
-          <p>
-            <strong>Data de nascimento:</strong>
-            {{ atleta.dataNascimento }}
-        </p>
-        <p>
-          <strong>Idade:</strong>
-          {{ calcularIdadeAtleta(atleta.dataNascimento) }} anos
-      </p>
+    <p>
+      <strong>Data de nascimento:</strong>
+      {{ atleta.data_nascimento }}
+    </p>
 
-          <p><strong>Sexo:</strong> {{ atleta.sexo }}</p>
+    <p>
+      <strong>Idade:</strong>
+      {{ calcularIdadeAtleta(atleta.data_nascimento) }} anos
+    </p>
 
-          <p><strong>CEP:</strong> {{ atleta.cep }}</p>
+    <p>
+      <strong>Peso:</strong>
+      {{ atleta.peso }} kg
+    </p>
 
-          <p><strong>Rua:</strong> {{ atleta.ruaLogradouro }}</p>
+    <p>
+      <strong>Altura:</strong>
+      {{ atleta.altura }} m
+    </p>
 
-          <p><strong>Bairro:</strong> {{ atleta.bairro }}</p>
+    <p>
+      <strong>Sexo:</strong>
+      {{ atleta.sexo }}
+    </p>
 
-          <p><strong>Cidade:</strong> {{ atleta.cidade }}</p>
+    <p>
+      <strong>CEP:</strong>
+      {{ atleta.cep }}
+    </p>
 
-          <p><strong>UF:</strong> {{ atleta.uf }}</p>
+    <p>
+      <strong>Rua:</strong>
+      {{ atleta.rua_logradouro }}
+    </p>
 
-          <button type="button" (click)="excluir(atleta.id)">
-            Excluir
-        </button>
+    <p>
+      <strong>Bairro:</strong>
+      {{ atleta.bairro }}
+    </p>
 
-        <button type="button" (click)="editar(atleta.id)">
-            Editar
-        </button>
+    <p>
+      <strong>Cidade:</strong>
+      {{ atleta.cidade }}
+    </p>
 
-          <hr>
+    <p>
+      <strong>UF:</strong>
+      {{ atleta.uf }}
+    </p>
 
-      </div>
+    <button
+      type="button"
+      (click)="excluir(atleta.id ?? 0)">
+      Excluir
+    </button>
 
-  }
+    <button
+      type="button"
+      (click)="editar(atleta.id ?? 0)">
+      Editar
+    </button>
 
+    <hr>
+
+  </div>
 
 </section>

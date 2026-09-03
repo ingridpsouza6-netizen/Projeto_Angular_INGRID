@@ -9,8 +9,8 @@ import { Atleta } from '../component/Atleta';
 export class AtletaService {
 
   private urlApi =
-    'https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/atleta';
-
+    //'https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/atleta';
+  'http://127.0.0.1:8000/pessoa';
   constructor(private http: HttpClient) {}
 
   listarAtletas(): Observable<Atleta[]> {

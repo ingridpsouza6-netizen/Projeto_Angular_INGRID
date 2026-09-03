@@ -22,7 +22,8 @@ export class AtletaComponent {
   bairro = '';
   cidade = '';
   uf = '';
-  
+  peso = 0;
+  altura = 0;
 
   // ID DO ATLETA QUE ESTÁ SENDO EDITADO
   idAtletaEditando = 0;
@@ -41,9 +42,7 @@ export class AtletaComponent {
       console.log('ID RECEBIDO PARA EDIÇÃO:', id);
 
       if (id) {
-
         this.carregaDados(Number(id));
-
       }
 
     });
@@ -61,25 +60,41 @@ export class AtletaComponent {
     this.bairro = '';
     this.cidade = '';
     this.uf = '';
+    this.peso = 0;
+    this.altura = 0;
 
     this.idAtletaEditando = 0;
-
   }
 
   salvar() {
 
-    const atleta = new Atleta();
+    const atleta: Atleta = {
 
-    atleta.id = this.idAtletaEditando;
-    atleta.nome = this.nome;
-    atleta.cpf = this.cpf;
-    atleta.sexo = this.sexo;
-    atleta.dataNascimento = this.dataNascimento;
-    atleta.cep = this.cep;
-    atleta.ruaLogradouro = this.ruaLogradouro;
-    atleta.bairro = this.bairro;
-    atleta.cidade = this.cidade;
-    atleta.uf = this.uf;
+      id: this.idAtletaEditando,
+
+      nome: this.nome,
+
+      cpf: Number(this.cpf),
+
+      data_nascimento: this.dataNascimento,
+
+      peso: Number(this.peso),
+
+      altura: Number(this.altura),
+
+      sexo: this.sexo,
+
+      cep: Number(this.cep),
+
+      rua_logradouro: this.ruaLogradouro,
+
+      bairro: this.bairro,
+
+      cidade: this.cidade,
+
+      uf: this.uf
+
+    };
 
     // CADASTRAR NOVO ATLETA
     if (this.idAtletaEditando === 0) {
@@ -153,16 +168,29 @@ export class AtletaComponent {
         );
 
         // GUARDA O ID
-        this.idAtletaEditando = dadosAtleta.id;
+        this.idAtletaEditando = dadosAtleta.id ?? 0;
 
         // PREENCHE O FORMULÁRIO
         this.nome = dadosAtleta.nome;
+
         this.cpf = dadosAtleta.cpf;
+
+        this.dataNascimento = dadosAtleta.data_nascimento;
+
+        this.peso = dadosAtleta.peso;
+
+        this.altura = dadosAtleta.altura;
+
         this.sexo = dadosAtleta.sexo;
+
         this.cep = dadosAtleta.cep;
-        this.ruaLogradouro = dadosAtleta.ruaLogradouro;
+
+        this.ruaLogradouro = dadosAtleta.rua_logradouro;
+
         this.bairro = dadosAtleta.bairro;
+
         this.cidade = dadosAtleta.cidade;
+
         this.uf = dadosAtleta.uf;
 
       },

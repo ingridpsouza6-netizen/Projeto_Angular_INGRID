@@ -1,16 +1,16 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { AtletaService } from '../../service/atleta-service';
 import { Atleta } from '../Atleta';
 
 @Component({
   selector: 'app-atleta-list-component',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './atleta-list-component.html',
   styleUrl: './atleta-list-component.css'
 })
 export class AtletaListComponent {
-
   atletas: Atleta[] = [];
 
   constructor(

@@ -1,13 +1,14 @@
-export class Atleta {
-    id: number = 0;
-    nome: string = '';
-    cpf: number = 0;
-    dataNascimento: string = '';
-    sexo: string = '';
-    cep: number = 0;
-    ruaLogradouro: string = '';
-    bairro: string = '';
-    cidade: string = '';
-    uf: string = '';
-    
-  }
+export interface Atleta {
+  id?: number;
+  nome: string;
+  cpf: number;
+  data_nascimento: string;
+  peso: number;
+  altura: number;
+  sexo: string;
+  cep: number;
+  rua_logradouro: string;
+  bairro: string;
+  cidade: string;
+  uf: string;
+}
